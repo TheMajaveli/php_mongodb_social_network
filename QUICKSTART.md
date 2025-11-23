@@ -18,7 +18,14 @@ composer install
 
 3. **Créer la base de données et les données de test** :
 ```bash
-php migrations/seed.php
+# Créer les collections et index
+php database/migrations/create_collections.php
+
+# Seeder les données
+php database/seeders/seed.php
+
+# Ou tout en un
+php database/migrations/migrate.php --seed
 ```
 
 4. **Démarrer le serveur PHP** :
@@ -57,7 +64,9 @@ social-network-api/
 ├── config/          # Configuration (database, CORS)
 ├── controllers/     # Contrôleurs pour chaque ressource
 ├── models/          # Modèles MongoDB
-├── migrations/      # Script de migration des données
+├── database/        # Migrations et seeders
+│   ├── migrations/  # Scripts de migration (collections, index)
+│   └── seeders/     # Scripts de seeding (données de test)
 ├── utils/           # Utilitaires (Response)
 ├── index.php        # Point d'entrée
 ├── router.php       # Routeur principal
